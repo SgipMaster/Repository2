@@ -147,6 +147,8 @@ public partial class AuthorManager : System.Web.UI.Page
 
 		SqlConnection con = new SqlConnection(connectionString);
 		SqlCommand cmd = new SqlCommand(insertSQL, con);
+		cmd.CommandType = CommandType.StoredProcedure;
+		cmd.CommandText = "InsertAuthor";
 
 		cmd.Parameters.AddWithValue("@au_id", txtID.Text);
 		cmd.Parameters.AddWithValue("@au_fname", txtFirstName.Text);
@@ -192,6 +194,7 @@ public partial class AuthorManager : System.Web.UI.Page
 
 		SqlConnection con = new SqlConnection(connectionString);
 		SqlCommand cmd = new SqlCommand(insertSQL, con);
+		cmd.CommandText = "UpdateAuthor";
 
 		cmd.Parameters.AddWithValue("@au_id", txtID.Text);
 		cmd.Parameters.AddWithValue("@au_fname", txtFirstName.Text);
@@ -231,6 +234,7 @@ public partial class AuthorManager : System.Web.UI.Page
 
 		SqlConnection con = new SqlConnection(connectionString);
 		SqlCommand cmd = new SqlCommand(deleteSQL, con);
+		cmd.CommandText = "DeleteAuthor";
 		cmd.Parameters.AddWithValue("@au_id ", lstAuthor.SelectedItem.Value);
 
 		int deleted = 0;
