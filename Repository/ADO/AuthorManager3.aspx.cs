@@ -18,9 +18,6 @@ public partial class AuthorManager : System.Web.UI.Page
 	//See Page 451
 	private string connectionString = WebConfigurationManager.ConnectionStrings["Pubs"].ConnectionString;
 
-
-
-
 	protected void Page_Load(object sender, EventArgs e)
     {
         if (!this.IsPostBack)

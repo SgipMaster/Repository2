@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>Author Manager 3</title>
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
