@@ -137,9 +137,10 @@ public partial class AuthorManager : System.Web.UI.Page
 		}
 
 		string insertSQL;
-		insertSQL = "INSTERT INTO Authors (";
+		insertSQL = "INSERT INTO Authors (";
 		insertSQL += "au_id, au_fname, au_lname,";
 		insertSQL += "phone, address, city, state, zip, contract) ";
+		insertSQL += "VALUES (";
 		insertSQL += "@au_id, @au_fname, @au_lname,";
 		insertSQL += "@phone, @address, @city, @state, @zip, @contract) ";
 
@@ -154,7 +155,7 @@ public partial class AuthorManager : System.Web.UI.Page
 		cmd.Parameters.AddWithValue("@city", txtCity.Text);
 		cmd.Parameters.AddWithValue("@state", txtState.Text);
 		cmd.Parameters.AddWithValue("@zip", txtZip.Text);
-		cmd.Parameters.AddWithValue("@contact", chkContract.Checked);
+		cmd.Parameters.AddWithValue("@contract", chkContract.Checked);
 
 		int added = 0;
 		try
@@ -183,15 +184,14 @@ public partial class AuthorManager : System.Web.UI.Page
 		//See pages 460-461
 		string updateSQL;
 		updateSQL = "UPDATE Authors SET ";
-		updateSQL += "au_id, au_fname, au_lname,";
-		updateSQL += "phone, address, city, state, zip, contract) ";
-		updateSQL += "@au_id, @au_fname, @au_lname,";
-		updateSQL += "@phone, @address, @city, @state, @zip, @contract) ";
+		updateSQL += "au_fname=@au_fname, au_lname=@au_lname, ";
+		updateSQL += "phone=@phone, address=@address, city=@city, state=@state, ";
+		updateSQL += "zip=@zip, contract=@contract ";
+		updateSQL += "WHERE au_id=@au_id_original";
 
 		SqlConnection con = new SqlConnection(connectionString);
-		SqlCommand cmd = new SqlCommand(insertSQL, con);
+		SqlCommand cmd = new SqlCommand(updateSQL, con);
 
-		cmd.Parameters.AddWithValue("@au_id", txtID.Text);
 		cmd.Parameters.AddWithValue("@au_fname", txtFirstName.Text);
 		cmd.Parameters.AddWithValue("@au_lname", txtLastName.Text);
 		cmd.Parameters.AddWithValue("@phone", txtPhone.Text);
@@ -199,7 +199,8 @@ public partial class AuthorManager : System.Web.UI.Page
 		cmd.Parameters.AddWithValue("@city", txtCity.Text);
 		cmd.Parameters.AddWithValue("@state", txtState.Text);
 		cmd.Parameters.AddWithValue("@zip", txtZip.Text);
-		cmd.Parameters.AddWithValue("@contact", chkContract.Checked);
+		cmd.Parameters.AddWithValue("@contract", chkContract.Checked);
+		cmd.Parameters.AddWithValue("@au_id_original", lstAuthor.SelectedItem.Value);
 
 		int updated = 0;
 		try

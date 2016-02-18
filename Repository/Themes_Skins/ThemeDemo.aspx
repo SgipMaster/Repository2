@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
     
-	    
+    
     <br />
      <p class="title">
     Theme Demo
@@ -19,7 +19,7 @@
                 http://www.dotnettreats.com/tools/Default.aspx</a>]</p>
         <p>
             Select the Theme you want to apply:&nbsp;
-            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="Change_Theme" >
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
                 <asp:ListItem>None</asp:ListItem>
                 <asp:ListItem>MSN_Blue</asp:ListItem>
                 <asp:ListItem>MSN_CherryBlossom</asp:ListItem>
@@ -53,7 +53,7 @@
     <h3>
         Sample DetailsView</h3>
         <br />
-   <asp:DetailsView ID="DetailsView1" runat="server" SkinID="DetailsView" DataSourceID="SqlDataSource1" AutoGenerateRows="False" DataKeyNames="au_id">
+    <asp:DetailsView ID="DetailsView1" runat="server" SkinID="DetailsView" DataSourceID="SqlDataSource1" AutoGenerateRows="False" DataKeyNames="au_id">
         <Fields>
             <asp:BoundField DataField="au_id" HeaderText="au_id" ReadOnly="True" SortExpression="au_id" />
             <asp:BoundField DataField="au_lname" HeaderText="au_lname" SortExpression="au_lname" />
