@@ -117,9 +117,9 @@
             contract:
             <asp:CheckBox ID="contractCheckBox" runat="server" Checked='<%# Bind("contract") %>' />
             <br />
-            <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update"
+            <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update"
                 Text="Update"></asp:LinkButton>
-            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel"
+            &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CommandName="Cancel"
                 Text="Cancel"></asp:LinkButton>
         </EditItemTemplate>
         <InsertItemTemplate>
@@ -142,9 +142,9 @@
             contract:
             <asp:CheckBox ID="contractCheckBox" runat="server" Checked='<%# Bind("contract") %>' />
             <br />
-            <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert"
+            <asp:LinkButton ID="InsertButton" runat="server" CommandName="Insert"
                 Text="Insert"></asp:LinkButton>
-            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel"
+            &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CommandName="Cancel"
                 Text="Cancel"></asp:LinkButton>
         </InsertItemTemplate>
         <ItemTemplate>

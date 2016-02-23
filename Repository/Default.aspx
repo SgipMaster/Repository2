@@ -18,5 +18,7 @@
 	<a href="ADO/AuthorManager2.aspx" target="_blank">AuthorManager2.aspx</a><br />
 	<a href="ADO/AuthorManager3.aspx" target="_blank">AuthorManager3.aspx</a><br />
 	<a href="ADO/AuthorManagerSproc.aspx" target="_blank">AuthorManagerSproc.aspx</a><br />
+	<h3>Component-Based Architecture</h3>
+	<a href="Components/AuthorManager_Component.aspx" target="_blank">AuthorManager_Component.aspx</a><br />
 
 </asp:Content>
