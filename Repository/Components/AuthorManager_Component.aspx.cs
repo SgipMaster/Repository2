@@ -28,13 +28,13 @@ public partial class AuthorManager : System.Web.UI.Page
 
     private void FillAuthorList()
     {
-        //This method should populate the lstAuthor DropDownList with the authors in the pubs database
-        //Author names are shown as the text for each ListItem and author IDs are stored as the values
-        //See Pages 451-452
+		//This method should populate the lstAuthor DropDownList with the authors in the pubs database
+		//Author names are shown as the text for each ListItem and author IDs are stored as the values
+		//See Pages 451-452
 		lstAuthor.Items.Clear();
 
 		DataTable table = AuthorAccess.GetAllAuthorNames();
-
+		
 		foreach (DataRow row in table.Rows)
 		{
 			ListItem newItem = new ListItem();
@@ -49,42 +49,19 @@ public partial class AuthorManager : System.Web.UI.Page
 		//This method retrieves all of the attributes of the selected author from the database and
 		//populates the controls with these values
 		//See page 455
-		string selectSQL;
-		selectSQL = "Select * FROM Authors ";
-		selectSQL += "WHERE au_id='" + lstAuthor.SelectedItem.Value + "'";
-		SqlConnection con = new SqlConnection(connectionString);
-		SqlCommand cmd = new SqlCommand(selectSQL, con);
-		SqlDataReader reader;
 
-		try
-		{
-			con.Open();
-			reader = cmd.ExecuteReader();
-			reader.Read();
-
-			txtID.Text = reader["au_id"].ToString();
-			txtFirstName.Text = reader["au_fname"].ToString();
-			txtLastName.Text = reader["au_lname"].ToString();
-			txtPhone.Text = reader["phone"].ToString();
-			txtAddress.Text = reader["address"].ToString();
-			txtCity.Text = reader["city"].ToString();
-			txtState.Text = reader["state"].ToString();
-			txtZip.Text = reader["zip"].ToString();
-			chkContract.Checked = (bool)reader["contract"];
-			reader.Close();
-			lblResults	.Text = "";
-		}
-		catch (Exception err)
-		{
-			lblResults.Text = "Error getting author. ";
-			lblResults.Text += err.Message;
-		}
-		finally
-		{
-			con.Close();
-		}
-        
-        
+		DataTable table = AuthorAccess.GetAuthorInfoByID(lstAuthor.SelectedValue);
+						
+		txtID.Text = table.Rows[0]["au_id"].ToString();
+		txtFirstName.Text = table.Rows[0]["au_fname"].ToString();
+		txtLastName.Text = table.Rows[0]["au_lname"].ToString();
+		txtPhone.Text = table.Rows[0]["phone"].ToString();
+		txtAddress.Text = table.Rows[0]["address"].ToString();
+		txtCity.Text = table.Rows[0]["city"].ToString();
+		txtState.Text = table.Rows[0]["state"].ToString();
+		txtZip.Text = table.Rows[0]["zip"].ToString();
+		chkContract.Checked = (bool)table.Rows[0]["contract"];
+		lblResults.Text = "";
     }
     protected void cmdNew_Click(object sender, EventArgs e)
     {
@@ -112,19 +89,19 @@ public partial class AuthorManager : System.Web.UI.Page
 			lblResults.Text = "Records require an ID, first name, and last name.";
 			return;
 		}
-
-
+		
 		int added = 0;
 		try
 		{
 			added = AuthorAccess.InsertAuthor(txtID.Text, txtLastName.Text, txtFirstName.Text, txtPhone.Text, txtAddress.Text, txtCity.Text, txtState.Text, txtZip.Text, chkContract.Checked);
-			lblResults.Text = added.ToString() + " record inserted.";
 		}
 		catch (Exception err)
 		{
-			lblResults.Text = "Error instering record. ";
+			lblResults.Text = "Error updating author. ";
 			lblResults.Text += err.Message;
 		}
+
+		lblResults.Text = added.ToString() + " record inserted.";
 	
 		if (added > 0)
 			FillAuthorList();
@@ -138,8 +115,7 @@ public partial class AuthorManager : System.Web.UI.Page
 		int updated = 0;
 
 		try
-		{
-		
+		{		
 			updated = AuthorAccess.UpdateAuthor(lstAuthor.SelectedItem.Value, txtLastName.Text, txtFirstName.Text, txtPhone.Text, txtAddress.Text , txtCity.Text, txtState.Text, txtZip.Text, chkContract.Checked);
 			lblResults.Text = updated.ToString() + " record updated";
 		}
@@ -148,14 +124,12 @@ public partial class AuthorManager : System.Web.UI.Page
 			lblResults.Text = "Error updating author. ";
 			lblResults.Text += err.Message;
 		}
-
 	}
 
     protected void cmdDelete_Click(object sender, EventArgs e)
     {
 		//This method uses a paramaterized sql statement to delete an author from the database
 		//See page 462
-
 		int deleted = 0;
 
 		try
@@ -168,7 +142,6 @@ public partial class AuthorManager : System.Web.UI.Page
 			lblResults.Text = "Error deleting author. ";
 			lblResults.Text += err.Message;
 		}
-
 
 		if (deleted > 0)
 			FillAuthorList();

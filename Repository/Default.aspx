@@ -20,5 +20,8 @@
 	<a href="ADO/AuthorManagerSproc.aspx" target="_blank">AuthorManagerSproc.aspx</a><br />
 	<h3>Component-Based Architecture</h3>
 	<a href="Components/AuthorManager_Component.aspx" target="_blank">AuthorManager_Component.aspx</a><br />
-
+	<h3>Data Binding</h3>
+	<a href="DataBinding/SingleDataBinding.aspx" target="_blank">SingleDataBinding.aspx</a>
+	<a href="DataBinding/RepeatedDataBinding.aspx" target="_blank">RepeatedDataBinding.aspx</a>
+	<a href="DataBinding/AuthorManager_DataBound.aspx" target="_blank">AuthorManager_DataBound.aspx</a>
 </asp:Content>

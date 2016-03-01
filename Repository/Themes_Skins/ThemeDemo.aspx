@@ -19,13 +19,13 @@
                 http://www.dotnettreats.com/tools/Default.aspx</a>]</p>
         <p>
             Select the Theme you want to apply:&nbsp;
-            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndex_Change" >
                 <asp:ListItem>None</asp:ListItem>
                 <asp:ListItem>MSN_Blue</asp:ListItem>
                 <asp:ListItem>MSN_CherryBlossom</asp:ListItem>
                 <asp:ListItem>MSN_Finance</asp:ListItem>
                 <asp:ListItem>MSN_Morning</asp:ListItem>
-                <asp:ListItem>Msn_Purple</asp:ListItem>
+                <asp:ListItem>MSN_Purple</asp:ListItem>
                 <asp:ListItem>MSN_Red</asp:ListItem>
                 <asp:ListItem>WinXP_Blue</asp:ListItem>
                 <asp:ListItem>WinXP_Silver</asp:ListItem>

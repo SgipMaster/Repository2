@@ -104,6 +104,11 @@ public static class AuthorAccess
 		//************************** ADD CODE FOR GETTING AUTHOR INFO BY ID HERE ****************************
 		DbCommand comm = GenericDataAccess.CreateCommand();
 		comm.CommandText = "GetAuthorInfoByID";  //This is the name of the stored procedure to be executed
+		DbParameter param = comm.CreateParameter();
+		param.ParameterName = "@au_id";
+		param.DbType = DbType.String;
+		param.Value = au_id;
+		comm.Parameters.Add(param);
 		return GenericDataAccess.ExecuteSelectCommand(comm);
 	}
 
