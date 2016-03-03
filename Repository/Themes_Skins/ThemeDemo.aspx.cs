@@ -18,8 +18,7 @@ public partial class ThemeDemo : System.Web.UI.Page
 
 	protected void Page_PreInit(object sender, EventArgs e)
 	{
-		string theme;
-		theme = (string)Session["Theme"];
+		string theme = (string)Session["Theme"];
 		if (theme == "None")
 		{
 			Page.Theme = "";
@@ -30,6 +29,6 @@ public partial class ThemeDemo : System.Web.UI.Page
 	
 	protected void SelectedIndex_Change(object sender, EventArgs e)
 	{
-		Session["Theme"] = DropDownList1.SelectedValue;
+		Session["Theme"] = DropDownList1.SelectedItem.Text;
 	}
 }
