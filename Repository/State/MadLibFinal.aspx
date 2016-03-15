@@ -50,7 +50,7 @@
 </p>
 
 
-        <asp:Button ID="btnStartOver" runat="server" Text="Start Again" />
+        <asp:Button ID="btnStartOver" runat="server" Text="Start Again" OnClick="btnStartOver_Click" />
     </div>
     </asp:Panel>
     </form>

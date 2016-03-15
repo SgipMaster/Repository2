@@ -28,10 +28,17 @@ public static class AuthorAccess
         return GenericDataAccess.ExecuteSelectCommand(comm);
     }
 
-    
-    //This method updates author information using the "UpdateAuthor" stored procedure.  The names of the method parameters should match the names of the fields in the corresponding data control (e.g. Gridview, Detailsview, etc.)
-    //The method returns an int representing the number of rows affected.  This can be used to verify a successful operation, or it can be discarded
-    public static int UpdateAuthor(string au_id, string au_lname, string au_fname, string phone, string address, string city, string state, string zip, bool contract)
+	public static DataTable NewGetAllAuthorNames()
+	{
+		DbCommand comm = GenericDataAccess.CreateCommand();
+		comm.CommandText = "NewGetAllAuthorNames";  //This is the name of the stored procedure to be executed
+		return GenericDataAccess.ExecuteSelectCommand(comm);
+	}
+
+
+	//This method updates author information using the "UpdateAuthor" stored procedure.  The names of the method parameters should match the names of the fields in the corresponding data control (e.g. Gridview, Detailsview, etc.)
+	//The method returns an int representing the number of rows affected.  This can be used to verify a successful operation, or it can be discarded
+	public static int UpdateAuthor(string au_id, string au_lname, string au_fname, string phone, string address, string city, string state, string zip, bool contract)
     {
         DbCommand comm = GenericDataAccess.CreateCommand();
         comm.CommandText = "UpdateAuthor"; //This is the name of the stored procedure to be executed

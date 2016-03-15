@@ -47,7 +47,7 @@
 
     </table>
     
-    <asp:Button ID="btnNext" runat="server" Text="Create Madlib!" />
+    <asp:Button ID="btnNext" runat="server" Text="Create Madlib!" OnClick="btnNext_Click" />
     
     </div>
     

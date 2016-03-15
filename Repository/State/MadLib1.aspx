@@ -50,7 +50,7 @@
         </tr>
     </table>
     
-    <asp:Button ID="btnNext" runat="server" Text="Next..." />
+    <asp:Button ID="btnNext" runat="server" Text="Next..." PostBackUrl="~/State/MadLib2.aspx" />
     
     </div>
     

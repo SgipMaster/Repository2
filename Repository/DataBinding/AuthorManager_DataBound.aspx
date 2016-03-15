@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Author Manager 3</title>
+    <title>Author Manager Data Bound</title>
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>

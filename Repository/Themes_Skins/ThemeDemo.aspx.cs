@@ -11,24 +11,23 @@ using System.Web.UI.HtmlControls;
 
 public partial class ThemeDemo : System.Web.UI.Page
 {
-	protected void Page_Load(object sender, EventArgs e)
+	protected void Page_PreRender(object sender, EventArgs e)
     {
-		
+		DropDownList1.SelectedValue = (string)Session["Theme"];
 	}
 
 	protected void Page_PreInit(object sender, EventArgs e)
 	{
-		string theme = (string)Session["Theme"];
-		if (theme == "None")
-		{
+		if (Session["Theme"] == null || Session["Theme"].ToString() == "None")
 			Page.Theme = "";
-		}
 		else
-			Page.Theme = theme;
+			Page.Theme = Session["Theme"].ToString();
+			
 	}
 	
 	protected void SelectedIndex_Change(object sender, EventArgs e)
 	{
-		Session["Theme"] = DropDownList1.SelectedItem.Text;
+		Session["Theme"] = DropDownList1.SelectedValue;
+		Response.Redirect(Request.Path);
 	}
 }
